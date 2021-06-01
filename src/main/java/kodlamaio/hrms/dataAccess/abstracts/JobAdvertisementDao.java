@@ -12,6 +12,6 @@ public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement,Inte
 
     List<JobAdvertisement> getByIsActiveTrueAndEmployer_CompanyName(String companyName);
     List<JobAdvertisement> getByEmployer_CompanyName(String companyName);
-
+    List<JobAdvertisement> getByIsActiveTrueOrderByCreationDateDesc();
 
 }

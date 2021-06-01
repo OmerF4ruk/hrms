@@ -2,9 +2,7 @@ package kodlamaio.hrms.api.controllers;
 
 import kodlamaio.hrms.business.abstracts.JobAdversitementService;
 import kodlamaio.hrms.core.utilities.result.DataResult;
-import kodlamaio.hrms.core.utilities.result.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.core.utilities.result.SuccessDataResult;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +25,9 @@ public class JobAdvertisementController {
         return this.jobAdversitementService.getAll();
     }
 
-    @GetMapping("/getallSorted")
-    public DataResult<List<JobAdvertisement>> getAllSorted(){
-        return this.jobAdversitementService.getAllSorted();
+    @GetMapping("/getByIsActiveOrderByCreationDateDesc")
+    public DataResult<List<JobAdvertisement>> getByIsActiveOrderByCreationDateDesc(){
+        return this.jobAdversitementService.getByIsActiveOrderByCreationDateDesc();
     }
 
     @PostMapping("/add")
@@ -44,11 +42,10 @@ public class JobAdvertisementController {
     @GetMapping("/getByCompanyName")
     public DataResult<List<JobAdvertisement>>getByEmployer_CompanyName(@RequestParam String companyName){
         return this.jobAdversitementService.getByEmployer_CompanyName(companyName);
-
     }
 
     @GetMapping("/changeStatus")
-    public DataResult<JobAdvertisement> changeStatus(@RequestParam String companyName,@RequestParam int advertisementId,@RequestParam boolean status) {
-        return this.jobAdversitementService.changeStatus(companyName, advertisementId, status);
+    public DataResult<JobAdvertisement> changeStatus(@RequestParam String companyName,@RequestParam int advertisementId) {
+        return this.jobAdversitementService.changeStatus(companyName, advertisementId);
     }
 }

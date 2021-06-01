@@ -3,12 +3,8 @@ package kodlamaio.hrms.business.concretes;
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.core.utilities.result.Result;
 import kodlamaio.hrms.core.utilities.result.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.UserDao;
-import kodlamaio.hrms.entities.abstracts.User;
-import kodlamaio.hrms.entities.concretes.Department;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import kodlamaio.hrms.core.dataAccess.UserDao;
+import kodlamaio.hrms.core.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

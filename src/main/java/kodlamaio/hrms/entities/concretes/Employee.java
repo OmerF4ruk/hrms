@@ -1,6 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
-import kodlamaio.hrms.entities.abstracts.User;
+import kodlamaio.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

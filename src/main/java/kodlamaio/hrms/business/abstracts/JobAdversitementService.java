@@ -10,12 +10,13 @@ import java.util.List;
 
 public interface JobAdversitementService {
     public DataResult<List<JobAdvertisement>> getAll();
-    public DataResult<List<JobAdvertisement>> getAllSorted();
+    public DataResult<List<JobAdvertisement>> getByIsActiveOrderByCreationDateDesc();
     public Result add(JobAdvertisement jobAdvertisement);
 
     public DataResult<List<JobAdvertisement>> getByEmployer_CompanyName(String companyName);
 
     public DataResult<List<JobAdvertisement>> getByIsActiveAndEmployer_CompanyName(String companyName);
-    public DataResult changeStatus(String companyName,int advertisementId,boolean status);
+
+    public DataResult changeStatus(String companyName,int advertisementId);
 
 }

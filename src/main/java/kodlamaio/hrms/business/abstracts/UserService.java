@@ -1,7 +1,7 @@
 package kodlamaio.hrms.business.abstracts;
 
 import kodlamaio.hrms.core.utilities.result.Result;
-import kodlamaio.hrms.entities.abstracts.User;
+import kodlamaio.hrms.core.entities.User;
 
 import java.util.List;
 

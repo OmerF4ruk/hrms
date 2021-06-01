@@ -16,6 +16,7 @@ public class JobAdvertisementManager implements JobAdversitementService {
 
     @Autowired
     public JobAdvertisementManager(JobAdvertisementDao jobAdvertisementDao) {
+        super();
         this.jobAdvertisementDao = jobAdvertisementDao;
     }
 
@@ -25,9 +26,8 @@ public class JobAdvertisementManager implements JobAdversitementService {
     }
 
     @Override
-    public DataResult<List<JobAdvertisement>> getAllSorted() {
-        Sort sort = Sort.by(Sort.Direction.DESC,"creationDate");
-        return new SuccessDataResult<List<JobAdvertisement>>( this.jobAdvertisementDao.findAll(sort));
+    public DataResult<List<JobAdvertisement>> getByIsActiveOrderByCreationDateDesc() {
+        return new SuccessDataResult<List<JobAdvertisement>>( this.jobAdvertisementDao.getByIsActiveTrueOrderByCreationDateDesc());
     }
 
     @Override
@@ -49,13 +49,14 @@ public class JobAdvertisementManager implements JobAdversitementService {
     }
 
     @Override
-    public DataResult<JobAdvertisement> changeStatus(String companyName,int advertisementId, boolean status) {
+    public DataResult<JobAdvertisement> changeStatus(String companyName,int advertisementId) {
 
-        List<JobAdvertisement> advertisements = this.jobAdvertisementDao.getByEmployer_CompanyName(companyName);
+        List<JobAdvertisement> advertisements = this.jobAdvertisementDao.getByIsActiveTrueAndEmployer_CompanyName(companyName);
 
-        for (JobAdvertisement jobAdvertisement : advertisements) {
+        for (JobAdvertisement jobAdvertisement : advertisements)
+        {
             if (advertisementId == jobAdvertisement.getId()) {
-                jobAdvertisement.setActive(status);
+                jobAdvertisement.setActive(false);
                 this.jobAdvertisementDao.save(jobAdvertisement);
                 return new SuccessDataResult<JobAdvertisement>(this.jobAdvertisementDao.getById(advertisementId));
             }
